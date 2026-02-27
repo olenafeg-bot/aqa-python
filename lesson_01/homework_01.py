@@ -18,6 +18,7 @@ apples = 2
 banana = apples * 4
 
 # task 05 == виправте назви змінних
+
 storona_1 = 1
 storona_2 = 2
 storona_3 = 3
