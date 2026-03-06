@@ -28,17 +28,17 @@ print(adwentures_of_tom_sawer_new)
 # task 02 ==
 """ Замініть .... на пробіл
 """
-adwentures_of_tom_sawer_new2 = adwentures_of_tom_sawer.replace("....", " ")
+adwentures_of_tom_sawer_new2 = adwentures_of_tom_sawer_new.replace("....", " ")
 print(adwentures_of_tom_sawer_new2)
 # task 03 ==
 """ Зробіть так, щоб у тексті було не більше одного пробілу між словами.
 """
-adwentures_of_tom_sawer_new3 = adwentures_of_tom_sawer.replace("  ", " ")
+adwentures_of_tom_sawer_new3 = adwentures_of_tom_sawer_new2.replace("  ", " ")
 print(adwentures_of_tom_sawer_new3)
 # task 04
 """ Виведіть, скількі разів у тексті зустрічається літера "h"
 """
-count_h = adwentures_of_tom_sawer.count("h")
+count_h = adwentures_of_tom_sawer_new3.count("h")
 print(count_h)
 
 
@@ -68,7 +68,7 @@ print(adwentures_of_tom_sawer_sentences)
 """ Виведіть четверте речення з adwentures_of_tom_sawer_sentences.
 Перетворіть рядок у нижній регістр.
 """
-adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split(". ")
+adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer_new3.split(". ")
 fourth_sentence = adwentures_of_tom_sawer_sentences[3]
 fourth_sentence_lower = fourth_sentence.lower()
 print(fourth_sentence_lower)
@@ -82,5 +82,6 @@ print(adwentures_of_tom_sawer_start_with)
 # task 10
 """ Виведіть кількість слів останнього речення з adwentures_of_tom_sawer_sentences.
 """
-lenth_last_sentence = len(adwentures_of_tom_sawer_sentences[-1])
-print(lenth_last_sentence)
+last_sentence = adwentures_of_tom_sawer_sentences[-1]
+last_sentence_count = len(last_sentence.split())
+print(last_sentence_count)
