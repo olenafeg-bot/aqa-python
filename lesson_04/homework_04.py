@@ -76,8 +76,12 @@ print(fourth_sentence_lower)
 # task 09
 """ Перевірте чи починається якесь речення з "By the time".
 """
-adwentures_of_tom_sawer_start_with = adwentures_of_tom_sawer.startswith("By the time")
-print(adwentures_of_tom_sawer_start_with)
+for line in adwentures_of_tom_sawer:
+    if line.startswith("By the time"):
+        print("The line starts with 'By the time'")
+    else:
+        print("The line does not start with 'By the time'")
+
 
 # task 10
 """ Виведіть кількість слів останнього речення з adwentures_of_tom_sawer_sentences.
