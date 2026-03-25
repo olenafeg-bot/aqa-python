@@ -167,9 +167,9 @@ in for a dead rat and a string to swing it with—and so on, and so on,
 hour after hour. And when the middle of the afternoon came, from being a
 poor poverty, stricken boy in the .... morning, Tom was literally
 rolling in wealth."""
-def count_title_words():
+def count_title_words(text):
 
-    adwentures_of_tom_sawer_words = adwentures_of_tom_sawer.split()
+    adwentures_of_tom_sawer_words = text.split()
     count = sum(1 for word in adwentures_of_tom_sawer_words if word.istitle())
     return count
-print(count_title_words())
+print(count_title_words(adwentures_of_tom_sawer))
