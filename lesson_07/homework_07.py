@@ -13,19 +13,15 @@ def multiplication_table(number):
         # десь тут помила, а може не одна
         if  result > 25:
             # Enter the action to take if the result is greater than 25
-            continue
+            break
+
         print(str(number) + "x" + str(multiplier) + "=" + str(result))
 
         # Increment the appropriate variable
         multiplier += 1
 
 multiplication_table(5)
-# Should print:
-# 3x1=3
-# 3x2=6
-# 3x3=9
-# 3x4=12
-# 3x5=15
+
 
 
 # task 2
@@ -33,7 +29,8 @@ multiplication_table(5)
 """
 def sum_num(num1, num2):
     return num1 + num2
-print (sum_num(4, 5))
+if __name__ == "__main__":
+    print (sum_num(4, 5))
 
 # task 3
 """  Написати функцію, яка розрахує середнє арифметичне списку чисел.
@@ -48,7 +45,8 @@ print(average(numbers))
 my_string = "From fairest creatures we desire increase"
 def reverse_string(my_string):
     return my_string[::-1]
-print(reverse_string(my_string))
+if __name__ == "__main__":
+    print(reverse_string(my_string))
 
 
 # task 5
@@ -60,8 +58,8 @@ def longest_word(word_list):
     for word in word_list:
         if len(word) > len(longest):
             return word
-
-print(longest_word(word_list))
+if __name__ == "__main__":
+    print(longest_word(word_list))
 
 
 # task 6
@@ -74,11 +72,13 @@ def find_substring(str1, str2):
 
 str1 = "Hello, world!"
 str2 = "world"
-print(find_substring(str1, str2)) # поверне 7
+if __name__ == "__main__":
+    print(find_substring(str1, str2)) # поверне 7
 
 str1 = "The quick brown fox jumps over the lazy dog"
 str2 = "cat"
-print(find_substring(str1, str2)) # поверне -1
+if __name__ == "__main__":
+    print(find_substring(str1, str2)) # поверне -1
 
 # task 7
 
@@ -104,30 +104,33 @@ people_records = [
 def people_records_inserted(people_records):
     people_records.insert(0, ('Emilia', 'Clark', 39, 'Actress', 'Los Angeles'))
     return people_records
-print(people_records_inserted(people_records))
+if __name__ == "__main__":
+     print(people_records_inserted(people_records))
 
 """Change the replace the records in the list"""
 
 def people_records_new(people_records):
     people_records[1], people_records[5] = people_records[5], people_records[1]
     return people_records
-print(people_records_new(people_records))
+if __name__ == "__main__":
+    print(people_records_new(people_records))
 
 """Check the age of the people"""
 def check_age(people_records):
     return all(people_records[i][2] >= 30 for i in [6, 10, 13])
-print(check_age(people_records))
+if __name__ == "__main__":
+    print(check_age(people_records))
 # task 8
 """Return the even numbers from the list"""
-def even_numbers():
 
-    even_number = 0
-    for num in list:
-        if num % 2 == 0:
-            even_number += num
-            return even_number
-list = [1, 76, 5, 777, 89, 44, 6, 30, 64]
-print(even_numbers())
+def even_numbers(numbers):
+    return [num for num in numbers if num % 2 == 0]
+
+
+if __name__ == "__main__":
+    print(even_numbers([1, 76, 5, 777, 89, 44, 6, 30, 64]))
+
+
 # task 9
 """Add the string items to the list"""
 lst1 = ['1', '2', 3, True, 'False', 5, '6', 7, 8, 'Python', 9, 0, 'Lorem Ipsum']
@@ -138,7 +141,8 @@ def new_list():
         if type(item) == str:
             lst2.append(item)
     return lst2
-print(new_list())
+if __name__ == "__main__":
+    print(new_list())
 # task 10
 """  Оберіть будь-які 4 таски з попередніх домашніх робіт та
 перетворіть їх у 4 функції, що отримують значення та повертають результат.
@@ -172,4 +176,6 @@ def count_title_words(text):
     adwentures_of_tom_sawer_words = text.split()
     count = sum(1 for word in adwentures_of_tom_sawer_words if word.istitle())
     return count
-print(count_title_words(adwentures_of_tom_sawer))
+if __name__ == "__main__":
+    print(count_title_words(adwentures_of_tom_sawer))
+
