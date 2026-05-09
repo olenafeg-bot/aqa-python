@@ -9,16 +9,18 @@ file_path2 = base_path / "localizations_ru.json"
 file_path3 = base_path / "login.json"
 file_path4 = base_path / "swagger.json"
 
-for file_path in [file_path1, file_path2, file_path3, file_path4]:
-    try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            print(data)
-    except json.JSONDecodeError as e:
-        print("Incorrect format JSON:", e)
-        log_event(file_path.name, f"Invalid JSON: {e}")
+def valid_json(file_path1, file_path2, file_path3, file_path4):
+    for file_path in [file_path1, file_path2, file_path3, file_path4]:
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                print(data)
+        except json.JSONDecodeError as e:
+            print("Incorrect format JSON:", e)
+            log_event(file_path.name, f"Invalid JSON: {e}")
 
-
+if __name__ == "__main__":
+    valid_json(file_path1, file_path2, file_path3, file_path4)
 
 
 
