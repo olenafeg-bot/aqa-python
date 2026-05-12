@@ -1,3 +1,4 @@
 2026-05-07 00:34:09,166 - ERROR - File: login.json, Status: Invalid JSON: Expecting ',' delimiter: line 8 column 1 (char 324) (logger.py:20)
 2026-05-07 00:46:51,930 - ERROR - File: login.json, Status: Invalid JSON: Expecting ',' delimiter: line 8 column 1 (char 324) (logger.py:20)
 2026-05-07 01:18:54,850 - ERROR - File: 123, Status: Not found (logger.py:20)
+2026-05-12 10:46:45,368 - ERROR - File: login.json, Status: Invalid JSON: Expecting ',' delimiter: line 8 column 1 (char 324) (logger.py:20)
