@@ -1,57 +1,84 @@
-
 import requests
+import logging
 
 BASE_URL = "https://images-api.nasa.gov"
 
-search_url = f"{BASE_URL}/search"
-params = {
-    "q": "Curiosity Mars rover",
-    "media_type": "image"
-}
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
-response = requests.get(search_url, params=params)
-response.raise_for_status()
 
-data = response.json()
+class ImagesDownloader:
 
-items = data["collection"]["items"]
+    def __init__(self, query="Curiosity Mars rover"):
+        self.query = query
+        self.base_url = BASE_URL
 
-nasa_ids = []
-for item in items:
-    nasa_id = item["data"][0]["nasa_id"]
-    nasa_ids.append(nasa_id)
+    def search_images(self):
+        params = {
+            "q": self.query,
+            "media_type": "image"
+        }
 
-nasa_ids = nasa_ids[:2]
+        response = requests.get(f"{self.base_url}/search", params=params)
+        response.raise_for_status()
 
-print("NASA IDs:", nasa_ids)
+        logging.info(f"Search results for '{self.query}' received")
+        return response.json()
 
-for i, nasa_id in enumerate(nasa_ids, start=1):
-    asset_url = f"{BASE_URL}/asset/{nasa_id}"
+    def find_nasa_ids(self, data, limit=2):
+        items = data["collection"]["items"]
 
-    asset_response = requests.get(asset_url)
-    asset_response.raise_for_status()
+        nasa_ids = [
+            item["data"][0]["nasa_id"]
+            for item in items
+        ][:limit]
 
-    asset_data = asset_response.json()
+        logging.info(f"Found NASA IDs: {nasa_ids}")
+        return nasa_ids
 
-    files = asset_data["collection"]["items"]
+    def get_asset_urls(self, nasa_id):
+        response = requests.get(f"{self.base_url}/asset/{nasa_id}")
+        response.raise_for_status()
 
-    jpg_url = None
-    for file in files:
-        image = file["href"]
-        if image.endswith(".jpg"):
-            jpg_url = image
-            break
+        logging.info(f"Fetched assets for {nasa_id}")
+        return response.json()["collection"]["items"]
 
-    if jpg_url:
-        print(f"Downloading {jpg_url}")
+    def get_jpg_url(self, files):
+        for file in files:
+            image = file["href"]
+            if image.endswith(".jpg"):
+                logging.info(f"Found JPG: {image}")
+                return image
 
-        img_response = requests.get(jpg_url)
-        img_response.raise_for_status()
+        logging.warning("No JPG found")
+        return None
 
-        filename = f"mars_photo{i}.jpg"
+    def download_image(self, url, filename):
+        response = requests.get(url)
+        response.raise_for_status()
+
         with open(filename, "wb") as f:
-            f.write(img_response.content)
+            f.write(response.content)
 
-        print(f"Saved {filename}")
-    else:
-        print(f"No JPG found for {nasa_id}")
+        logging.info(f"Saved {filename}")
+
+    def run(self):
+        data = self.search_images()
+        nasa_ids = self.find_nasa_ids(data)
+
+        for i, nasa_id in enumerate(nasa_ids, start=1):
+            files = self.get_asset_urls(nasa_id)
+            jpg_url = self.get_jpg_url(files)
+
+            if jpg_url:
+                filename = f"mars_photo{i}.jpg"
+                self.download_image(jpg_url, filename)
+            else:
+                logging.warning(f"No image for {nasa_id}")
+
+
+if __name__ == "__main__":
+    downloader = ImagesDownloader()
+    downloader.run()
