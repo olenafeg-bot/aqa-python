@@ -39,10 +39,10 @@ class TestSession:
         })
 
         return session
-
-    def test_cars(self, session):
+    @pytest.mark.parametrize("sort_by, limit", [("price", 10)])
+    def test_cars(self, session, sort_by, limit):
         logger.info(f"Sending request to /cars ")
-        response = session.get(f"{BASE_URL}/cars", params={"sort_by": "price", "limit": 10})
+        response = session.get(f"{BASE_URL}/cars", params={"sort_by": sort_by, "limit": limit})
 
         assert response.status_code == 200
         logger.info(f"Cars status: {response.status_code}")
