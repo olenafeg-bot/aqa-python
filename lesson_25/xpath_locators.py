@@ -1,0 +1,32 @@
+#Landing Page
+HOME_BUTTON = '//a[@href='/' and text()='Home']'
+ABOUT_BUTTON = '//button[contains(@class,'btn header-link' and text()="About"]'
+CONTACTS = '//button[contains(@class,'btn header-link' and text()="Contacts"]'
+FACEBOOK_LINK = '//a[@href='https://www.facebook.com/Hillel.IT.School']'
+TELEGRAM_LINK = '//a[@href='https://t.me/ithillel_kyiv']'
+YOUTUBE_LINK = '//a[@href='https://youtube.com/user/HillelITSchool?sub_confirmation=1']'
+INSTAGRAM_LINK = '//a[@href='https://www.instagram.com/hillel_itschool/']'
+LINKEDIN_LINK = '//a[@href='https://www.linkedin.com/school/ithillel/']'
+
+#Sign Up locators
+SIGN_UP_BUTTON = '//button[contains(@class,'btn-primary') and text()='Sign up']'
+REGISTRATION_FORM = '//div[contains(@class,'modal-header')]//h4[text()='Registration']'
+NAME_INPUT_FIELD = '//input[@id='signupName']'
+NAME_REQUIRED_ERROR = '//div[contains(@class, 'invalid-feedback')]//p[text()="Name required"]'
+LAST_NAME_INPUT_FIELD = '//input[@id='signupLastName']'
+LAST_NAME_REQUIRED_ERROR = '//div[contains(@class, 'invalid-feedback')]//p[text()="Last name required"]'
+EMAIL_INPUT_FIELD = '//input[@id='signupEmail']'
+EMAIL_REQUIRED_ERROR = '//div[contains(@class, 'invalid-feedback')]//p[text()="Email required"]'
+PASSWORD_INPUT_FIELD = '//input[@id='signupPassword']'
+PASSWORD_REQUIRED_ERROR = '//div[contains(@class, 'invalid-feedback')]//p[text()="Password required"]'
+REPEAT_PASSWORD_INPUT_FIELD = '//input[@id="signupRepeatPassword"]'
+REPEAT_PASSWORD_REQUIRED_ERROR = '//div[contains(@class, 'invalid-feedback')]//p[text()="Re-enter password required"]'
+REGISTER_BUTTON = '//button[contains(@class,"btn-primary") and text()="Register"]'
+
+#Sign in
+SIGN_iN_BUTTON = '//button[contains(@class,"btn-primary") and text()="Sign In"]'
+LOG_IN_FORM = '//h4[contains(@class,'modal-title')and text()="Log in"]'
+EMAIL_FIELD = '//input[@id="signinEmail"]'
+EMAIL_REQUIRED = '//div[contains(@class, 'invalid-feedback')]//p[text()="Email required"]'
+PASSWORD_FIELD = '//input[@id='signinPassword']'
+EMAIL_INCORRECT = '//div[contains(@class, 'invalid-feedback')]//p[text()="Email is incorrect"]'
